@@ -4,13 +4,13 @@ public class SortingUtility {
 
 
     public static <T extends Comparable<T>> void gnomeSort(T[] data) {
-        int i = 0;
-        while (i < data.length) {
-            if (i == 0 || data[i].compareTo(data[i - 1]) >= 0) {
-                i++;
+        int pos = 0;
+        while (pos < data.length) {
+            if (pos == 0 || data[pos].compareTo(data[pos - 1]) >= 0) {
+                pos++;
             } else {
-                swap(data, i, i - 1);
-                i--;
+                swap(data, pos, pos - 1);
+                pos--;
             }
         }
     }
@@ -45,12 +45,12 @@ public class SortingUtility {
 
         for (int gap : gaps) {
             for (int i = gap; i < data.length; i += 1) {
-                T hold = data[i];
+                T temp = data[i];
                 int j;
-                for (j = i; (j >= gap) && (data[j - gap].compareTo(hold) > 0); j -= gap) {
+                for (j = i; (j >= gap) && (data[j - gap].compareTo(temp) > 0); j -= gap) {
                     data[j] = data[j - gap];
                 }
-                data[j] = hold;
+                data[j] = temp;
             }
         }
     }
